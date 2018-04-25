@@ -6,7 +6,7 @@ curdir = os.path.dirname(__file__)
 output_dir = os.path.join(curdir, 'test_output')
 ql.set_output_dir(output_dir)
 config_fn = os.path.join(
-    curdir, '/home/daniel/Master/Quantum_Computing_and_Quantum_Information/OpenQL/tests/hardware_config_cc_light.json')
+    curdir, '/home/daniel/Master/Quantum_Computing_and_Quantum_Information/tools/OpenQL/tests/hardware_config_cc_light.json')
 platform = ql.Platform('platform_none', config_fn)
 sweep_points = [1, 2]
 num_circuits = 1

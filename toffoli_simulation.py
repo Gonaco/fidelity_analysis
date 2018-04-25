@@ -3,7 +3,7 @@ import qxelarator
 qx = qxelarator.QX()
 
 # set the required qasm to be executed on qx
-qx.set("toffoli.qasm")
+qx.set("test_output/toffoli_gate.qasm")
 
 N_exp = 1000
 
