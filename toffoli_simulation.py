@@ -19,6 +19,6 @@ for i in range(N_exp):
     c1 = qx.get_measurement_outcome(1)
     c2 = qx.get_measurement_outcome(2)
 
-    print("Experiment {}".format("string", i))
-    print("-\n")
-    print("{} {} {}".format(c0, c1, c2))
+    print("Experiment {}".format(i))
+    print("-")
+    print("{} {} {}\n".format(c0, c1, c2))
