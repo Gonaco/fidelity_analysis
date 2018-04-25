@@ -16,4 +16,4 @@ for i in range(N_exp):
 
     print("Experiment {}".format("string", i))
     print("-\n")
-    print("{} {} {} {} {} {}".format(c0, c1, c2))
+    print("{} {} {}".format(c0, c1, c2))
