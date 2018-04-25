@@ -10,7 +10,7 @@ qx.set("test_output/toffoli_gate.qasm")
 
 N_exp = 1000
 
-d_hilbert_spc = 3
+d_hilbert_spc = 2 ^ 3
 
 for i in range(N_exp):
 
@@ -23,7 +23,7 @@ for i in range(N_exp):
     # print("-")
     # print("{} {} {}\n".format(c0, c1, c2))
 
-    state_n = i % 2 ^ d_hilbert_spc
+    state_n = i % d_hilbert_spc
     rho = qt.fock(d_hilbert_spc, state_n)
 
     qx.execute()                            # execute
