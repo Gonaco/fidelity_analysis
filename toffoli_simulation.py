@@ -13,6 +13,10 @@ for i in range(N_exp):
     c1 = qx.get_measurement_outcome(1)
     c2 = qx.get_measurement_outcome(2)
 
+    print("Reading test")
+    print("-")
+    print("{} {} {}\n".format(c0, c1, c2))
+
     qx.execute()                            # execute
 
     c0 = qx.get_measurement_outcome(0)
