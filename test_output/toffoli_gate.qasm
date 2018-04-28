@@ -17,3 +17,6 @@ qubits 3
    tdag q2
    cnot q1,q0
    h q0
+   measure q0
+   measure q1
+   measure q2
