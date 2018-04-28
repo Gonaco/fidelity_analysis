@@ -12,6 +12,8 @@ N_exp = 1000
 
 d_hilbert_spc = 2 ** 3
 
+mean = 0
+
 rho = qt.fock(d_hilbert_spc, 0)
 
 for i in range(N_exp):
@@ -19,14 +21,14 @@ for i in range(N_exp):
     # state_n = i % d_hilbert_spc
     # rho = qt.fock(d_hilbert_spc, state_n)
 
+    print("Experiment {}".format(i))
+    print("-")
     qx.execute()                            # execute
 
     c0 = qx.get_measurement_outcome(0)
     c1 = qx.get_measurement_outcome(1)
     c2 = qx.get_measurement_outcome(2)
 
-    print("Experiment {}".format(i))
-    print("-")
     print("{} {} {}\n".format(c0, c1, c2))
 
     sigma_states = np.array([c0, c1, c2], dtype=int)
@@ -34,3 +36,11 @@ for i in range(N_exp):
     sigma = qt.fock(d_hilbert_spc, state_n)
     f = qt.metrics.fidelity(rho, sigma)
     print(f)
+
+    if f != 0 or f != 1:
+        print("Alert! not perpendicular state")
+        quit()
+    elif f == 1:
+        mean += f
+
+mean = mean/N_exp
