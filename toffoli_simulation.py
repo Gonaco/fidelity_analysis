@@ -12,10 +12,12 @@ N_exp = 1000
 
 d_hilbert_spc = 2 ** 3
 
+rho = qt.fock(d_hilbert_spc, 0)
+
 for i in range(N_exp):
 
-    state_n = i % d_hilbert_spc
-    rho = qt.fock(d_hilbert_spc, state_n)
+    # state_n = i % d_hilbert_spc
+    # rho = qt.fock(d_hilbert_spc, state_n)
 
     qx.execute()                            # execute
 
