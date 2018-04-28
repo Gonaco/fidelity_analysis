@@ -6,7 +6,7 @@ curdir = os.path.dirname(__file__)
 output_dir = os.path.join(curdir, 'test_output')
 ql.set_output_dir(output_dir)
 config_fn = os.path.join(
-    curdir, '/home/daniel/Master/Quantum_Computing_and_Quantum_Information/tools/OpenQL/tests/hardware_config_cc_light.json')
+    curdir, 'config_cc_light_fidelity_analysis.json')
 platform = ql.Platform('platform_none', config_fn)
 sweep_points = [1, 2]
 num_circuits = 1
@@ -30,6 +30,10 @@ k.gate('t', 0)
 k.gate('tdag', 2)
 k.gate('cnot', 1, 0)
 k.gate('h', 0)
+
+k.gate('measure', 0)
+k.gate('measure', 1)
+k.gate('measure', 2)
 
 p.add_kernel(k)
 p.compile(optimize=False)
