@@ -44,3 +44,4 @@ for i in range(N_exp):
         mean += f
 
 mean = mean/N_exp
+print(mean)
