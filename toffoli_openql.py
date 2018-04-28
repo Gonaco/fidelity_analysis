@@ -15,6 +15,10 @@ p = ql.Program('toffoli_gate', num_qubits, platform)
 p.set_sweep_points(sweep_points, num_circuits)
 k = ql.Kernel('toffoli_gate', platform)
 
+k.gate('prepz', 0)
+k.gate('prepz', 1)
+k.gate('prepz', 2)
+
 k.gate('tdag', 0)
 k.gate('tdag', 1)
 k.gate('h', 2)

@@ -14,15 +14,6 @@ d_hilbert_spc = 2 ** 3
 
 for i in range(N_exp):
 
-    # READOUT AT BEGINING TEST
-    # c0 = qx.get_measurement_outcome(0)
-    # c1 = qx.get_measurement_outcome(1)
-    # c2 = qx.get_measurement_outcome(2)
-
-    # print("Reading test")
-    # print("-")
-    # print("{} {} {}\n".format(c0, c1, c2))
-
     state_n = i % d_hilbert_spc
     rho = qt.fock(d_hilbert_spc, state_n)
 
