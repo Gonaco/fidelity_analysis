@@ -10,7 +10,7 @@ qx.set("test_output/toffoli_gate.qasm")
 
 N_exp = 1000
 
-d_hilbert_spc = 2 ^ 3
+d_hilbert_spc = 2 ** 3
 
 for i in range(N_exp):
 
