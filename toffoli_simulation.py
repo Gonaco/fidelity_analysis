@@ -37,10 +37,10 @@ for i in range(N_exp):
     f = qt.metrics.fidelity(rho, sigma)
     print(f)
 
-    if f != 0 or f != 1:
+    if f-int(f) != float(0):
         print("Alert! not perpendicular state")
         quit()
-    elif f == 1:
+    elif f == float(1):
         mean += f
 
 mean = mean/N_exp
