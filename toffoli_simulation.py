@@ -9,7 +9,7 @@ qx = qxelarator.QX()
 qx.set("test_output/toffoli_gate.qasm")
 
 # Ideal Toffoli gate
-# qx.set("ideal_toffoli")
+# qx.set("ideal_toffoli.qasm")
 
 N_exp = 1000
 
