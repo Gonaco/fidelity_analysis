@@ -5,10 +5,18 @@ import numpy as np
 curdir = os.path.dirname(__file__)
 output_dir = os.path.join(curdir, 'test_output')
 ql.set_output_dir(output_dir)
-# config_fn = os.path.join(
-#     curdir, 'config_cc_light_fidelity_analysis.json')
+
+
 config_fn = os.path.join(
-    curdir, 'hardware_config_cc_light.json')
+    curdir, 'config_cc_light_fidelity_analysis.json')
+
+
+# SC-7 LIMITATIONS
+# ----------------
+# config_fn = os.path.join(
+#     curdir, 'hardware_config_cc_light.json')
+
+
 platform = ql.Platform('platform_none', config_fn)
 sweep_points = [1, 2]
 num_circuits = 1

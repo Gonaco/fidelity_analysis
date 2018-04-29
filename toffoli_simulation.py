@@ -8,6 +8,9 @@ qx = qxelarator.QX()
 # set the required qasm to be executed on qx
 qx.set("test_output/toffoli_gate.qasm")
 
+# Ideal Toffoli gate
+# qx.set("ideal_toffoli")
+
 N_exp = 1000
 
 d_hilbert_spc = 2 ** 3
