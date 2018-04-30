@@ -43,7 +43,7 @@ k.gate('cnot', 2, 0)
 k.gate('t', 0)
 k.gate('tdag', 2)
 k.gate('cnot', 1, 0)
-k.gate('h', 0)
+k.gate('h', 2)
 
 k.gate('measure', 0)
 k.gate('measure', 1)

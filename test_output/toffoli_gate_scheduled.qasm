@@ -25,9 +25,9 @@ qubits 3
     qwait 3
     t q0 
     qwait 1
-    cnot q1,q0 
-    qwait 3
-    { h q0  | tdag q2  }
+    { cnot q1,q0  | tdag q2  }
+    qwait 1
+    h q2 
     qwait 1
     { measure q2  | measure q1  | measure q0  }
     qwait 1
