@@ -11,6 +11,12 @@ config_fn = os.path.join(
     curdir, 'config_cc_light_fidelity_analysis.json')
 
 
+# quantumsim QASM
+# ----------------
+# config_fn = os.path.join(
+#     curdir, 'config_quantumsim_fidelity_analysis.json')
+
+
 # SC-7 LIMITATIONS
 # ----------------
 # config_fn = os.path.join(
@@ -45,6 +51,7 @@ k.gate('tdag', 2)
 k.gate('cnot', 1, 0)
 k.gate('h', 2)
 
+k.display()
 k.gate('measure', 0)
 k.gate('measure', 1)
 k.gate('measure', 2)
