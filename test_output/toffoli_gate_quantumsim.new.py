@@ -17,7 +17,7 @@ def tdag(q, time):
     return RotateZ(q, time=time, angle=-np.pi/4)
 
 
-print("GPU is used:", sparsedm.using_gpu)
+# print("GPU is used:", sparsedm.using_gpu)
 
 # create a circuit
 c = Circuit(title="toffoli_gate")
@@ -62,3 +62,9 @@ c.add_measurement("q0", time=31, output_bit="m0", sampler=sampler)
 sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
 c.add_qubit("m1")
 c.add_measurement("q1", time=31, output_bit="m1", sampler=sampler)
+
+# sdm = sparsedm(c.get_qubit_names())
+
+
+print("Bell state fidelity: ", np.dot(
+    c.full_dm.dm.ravel(), c.full_dm.dm.ravel()))
