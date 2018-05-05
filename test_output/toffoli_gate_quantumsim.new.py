@@ -54,19 +54,19 @@ def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf):
 c = toffoli_gate_decomposition_circuit(10, 10)
 c_clean = toffoli_gate_decomposition_circuit()
 
-# sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
-# c.add_qubit("m2")
-# c.add_measurement("q2", time=28, output_bit="m2", sampler=sampler)
+sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
+c.add_qubit("m2")
+c.add_measurement("q2", time=28, output_bit="m2", sampler=sampler)
 
-# sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
-# c.add_qubit("m0")
-# c.add_measurement("q0", time=31, output_bit="m0", sampler=sampler)
+sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
+c.add_qubit("m0")
+c.add_measurement("q0", time=31, output_bit="m0", sampler=sampler)
 
-# sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
-# c.add_qubit("m1")
-# c.add_measurement("q1", time=31, output_bit="m1", sampler=sampler)
+sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
+c.add_qubit("m1")
+c.add_measurement("q1", time=31, output_bit="m1", sampler=sampler)
 
-# sdm = sparsedm(c.get_qubit_names())
+sdm = sparsedm(c.get_qubit_names())
 
 
 # print("GPU is used:", sparsedm.using_gpu)
