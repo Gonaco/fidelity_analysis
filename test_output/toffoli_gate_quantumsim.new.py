@@ -74,5 +74,8 @@ c_clean = toffoli_gate_decomposition_circuit()
 state_clean = sparsedm.SparseDM(c_clean.get_qubit_names())
 c_clean.apply_to(state_clean)
 
+state_decay = quantumsim.sparsedm.SparseDM(c.get_qubit_names())
+c.apply_to(state_decay)
+
 print("Bell state fidelity: ", np.dot(
-    c.full_dm.dm.ravel(), c.full_dm.dm.ravel()))
+    state_decay.full_dm.dm.ravel(), state_clean.full_dm.dm.ravel()))
