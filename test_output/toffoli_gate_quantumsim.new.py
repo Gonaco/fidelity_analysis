@@ -50,10 +50,6 @@ def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf):
 
     sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
 
-    c.add_qubit("m2")
-    c.add_measurement("q2", time=28, output_bit="m2", sampler=sampler)
-
-    sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
     c.add_qubit("m0")
     c.add_measurement("q0", time=31, output_bit="m0", sampler=sampler)
 
@@ -61,22 +57,38 @@ def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf):
     c.add_qubit("m1")
     c.add_measurement("q1", time=31, output_bit="m1", sampler=sampler)
 
+    sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
+    c.add_qubit("m2")
+    c.add_measurement("q2", time=28, output_bit="m2", sampler=sampler)
+
     return c
 
 
+# CIRCUIT DECLARATION
 c = toffoli_gate_decomposition_circuit(10, 10)
 c_clean = toffoli_gate_decomposition_circuit()
 
-# sdm = sparsedm(c.get_qubit_names())
+# SIMULATING
+sdm = sparsedm(c.get_qubit_names())
 
+measurements = []
+
+for i in range(1000):
+    c.apply_to(sdm)
+    measurements.append(
+        [sdm.classical['m0'], sdm.classical['m1'], sdm.classical['m1']])
+
+
+print(measurements)
 
 # print("GPU is used:", sparsedm.using_gpu)
 
+# FIDELITY CALCULATION
 state_clean = sparsedm.SparseDM(c_clean.get_qubit_names())
 c_clean.apply_to(state_clean)
 
 state_decay = sparsedm.SparseDM(c.get_qubit_names())
 c.apply_to(state_decay)
 
-print("Bell state fidelity: ", np.dot(
+print("Fidelity: ", np.dot(
     state_decay.full_dm.dm.ravel(), state_clean.full_dm.dm.ravel()))
