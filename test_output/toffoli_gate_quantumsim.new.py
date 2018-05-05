@@ -6,6 +6,8 @@ from quantumsim.circuit import Hadamard as h
 from quantumsim.circuit import RotateZ as RotateZ
 import quantumsim.sparsedm as sparsedm
 
+# print("GPU is used:", sparsedm.using_gpu)
+
 
 def t(q, time):
 
@@ -69,19 +71,18 @@ c = toffoli_gate_decomposition_circuit(10, 10)
 c_clean = toffoli_gate_decomposition_circuit()
 
 # SIMULATING
-sdm = sparsedm(c.get_qubit_names())
+sdm = sparsedm.SparseDM(c.get_qubit_names())
 
 measurements = []
 
 for i in range(1000):
     c.apply_to(sdm)
     measurements.append(
-        [sdm.classical['m0'], sdm.classical['m1'], sdm.classical['m1']])
+        [sdm.classical['m0'], sdm.classical['m1'], sdm.classical['m2']])
 
 
 print(measurements)
 
-# print("GPU is used:", sparsedm.using_gpu)
 
 # FIDELITY CALCULATION
 state_clean = sparsedm.SparseDM(c_clean.get_qubit_names())
