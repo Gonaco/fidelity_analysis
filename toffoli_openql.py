@@ -11,14 +11,14 @@ ql.set_option('log_level', 'LOG_WARNING')
 
 # IDEAL CASE
 # ----------
-config_fn = os.path.join(
-    curdir, 'config_cc_light_fidelity_analysis.json')
+# config_fn = os.path.join(
+#     curdir, 'config_cc_light_fidelity_analysis.json')
 
 
 # quantumsim QASM
 # ----------------
-# config_fn = os.path.join(
-#     curdir, 'config_quantumsim.json')
+config_fn = os.path.join(
+    curdir, 'config_quantumsim.json')
 
 
 # SC-7 LIMITATIONS
@@ -41,7 +41,7 @@ k.gate('prepz', [2])
 
 k.gate('tdag', [0])
 k.gate('tdag', [1])
-k.gate('h', [2])
+k.gate('hadamard', [2])
 k.gate('cnot', [2, 0])
 k.gate('t', [0])
 k.gate('cnot', [1, 2])
@@ -59,7 +59,7 @@ k.gate('measure', [0])
 k.gate('measure', [1])
 k.gate('measure', [2])
 
-k.gate('display', [0, 1, 2])
+# k.gate('display', [0, 1, 2])
 
 p.add_kernel(k)
 p.compile()

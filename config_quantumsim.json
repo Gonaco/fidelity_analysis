@@ -19,6 +19,17 @@
          "quantumsim_instr_type": "single_qubit_gate"
       },
 
+       "h" : 
+      {
+         "duration": 20, 
+         "qubits": ["q1"], 
+         "matrix" : [ [0.0,0.0], [1.0,0.0],
+	              [1.0,0.0], [0.0,0.0] ], 
+         "disable_optimization": false,
+         "quantumsim_instr_name": "hadamard",
+         "quantumsim_instr_type": "single_qubit_gate"
+      },
+
       "cphase" : 
       {
          "duration": 20, 

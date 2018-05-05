@@ -7,7 +7,7 @@ qubits 3
    prepz q2
    tdag q0
    tdag q1
-   h q2
+   hadamard q2
    cnot q2,q0
    t q0
    cnot q1,q2
