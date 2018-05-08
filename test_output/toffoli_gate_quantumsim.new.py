@@ -3,7 +3,7 @@ from quantumsim.circuit import Circuit
 from quantumsim.circuit import uniform_noisy_sampler
 from quantumsim.circuit import CNOT as cnot
 from quantumsim.circuit import Hadamard as h
-from quantumsim.circuit import RotateZ as RotateZ
+from quantumsim.circuit import RotateEuler as RotateEuler
 import quantumsim.sparsedm as sparsedm
 
 # print("GPU is used:", sparsedm.using_gpu)
@@ -11,12 +11,12 @@ import quantumsim.sparsedm as sparsedm
 
 def t(q, time):
 
-    return RotateZ(q, time=time, angle=np.pi/4)
+    return RotateEuler(q, time=time, theta=0, phi=np.pi/4, lamda=0)
 
 
 def tdag(q, time):
 
-    return RotateZ(q, time=time, angle=-np.pi/4)
+    return RotateEuler(q, time=time, theta=0, phi=-np.pi/4, lamda=0)
 
 
 def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf):
@@ -51,7 +51,6 @@ def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf):
     c.add_gate(h("q2", time=27))
 
     sampler = uniform_noisy_sampler(readout_error=0.03, seed=42)
-
     c.add_qubit("m0")
     c.add_measurement("q0", time=31, output_bit="m0", sampler=sampler)
 
@@ -78,13 +77,13 @@ measurements = []
 for i in range(1000):
     c.apply_to(sdm)
     measurements.append(
-        [sdm.classical['m0'], sdm.classical['m1'], sdm.classical['m2']])
+        [sdm.classical["m0"], sdm.classical["m1"], sdm.classical["m2"]])
 
 
 print(measurements)
 
 
-# FIDELITY CALCULATION
+# FIDELITY CALCULATION (TO UNDERSTAND!!!!!!!!!)
 state_clean = sparsedm.SparseDM(c_clean.get_qubit_names())
 c_clean.apply_to(state_clean)
 
