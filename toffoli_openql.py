@@ -11,14 +11,14 @@ ql.set_option('log_level', 'LOG_WARNING')
 
 # IDEAL CASE
 # ----------
-# config_fn = os.path.join(
-#     curdir, 'config_cc_light_fidelity_analysis.json')
+config_fn = os.path.join(
+    curdir, 'config_cc_light_fidelity_analysis.json')
 
 
 # quantumsim QASM
 # ----------------
-config_fn = os.path.join(
-    curdir, 'config_quantumsim.json')
+# config_fn = os.path.join(
+#     curdir, 'config_quantumsim.json')
 
 
 # SC-7 LIMITATIONS
