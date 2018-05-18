@@ -34,12 +34,12 @@ for i in range(N_exp):
 
     print("{} {} {}\n".format(c0, c1, c2))
 
-    print(qx.get_state()))
+    print(qx.get_state())
 
-    sigma_states=np.array([c0, c1, c2], dtype = int)
-    state_n=int("".join(map(str, sigma_states)), 2)
-    sigma=qt.fock(d_hilbert_spc, state_n)
-    f=qt.metrics.fidelity(rho, sigma)
+    sigma_states = np.array([c0, c1, c2], dtype=int)
+    state_n = int("".join(map(str, sigma_states)), 2)
+    sigma = qt.fock(d_hilbert_spc, state_n)
+    f = qt.metrics.fidelity(rho, sigma)
     print(f)
 
     if f-int(f) != float(0):
@@ -48,5 +48,5 @@ for i in range(N_exp):
     elif f == float(1):
         mean += f
 
-mean=mean/N_exp
+mean = mean/N_exp
 print(mean)
