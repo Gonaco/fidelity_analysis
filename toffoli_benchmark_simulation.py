@@ -14,11 +14,12 @@ def analysis():
 
     expected_measurement, expected_q_state = qx_simulation(qasm_f_path, 3)
 
-    add_error_model(qasm_f_path, 0.01)
+    # add_error_model(qasm_f_path, 0.01)
 
     for i in range(N_exp):
 
-        measurement, q_state = qx_simulation("."+qasm_f_path+"~", 3)
+        measurement, q_state = qx_simulation(
+            "test_output/toffoli_gate_error.qasm", 3)
 
         succes_registry[i] = 1 if measurement == expected_measurement else 0
 
@@ -42,23 +43,23 @@ def output_quantum_state(q_state, N_qubits):
     return amplitude*base_state
 
 
-def add_error_model(qasm_f_path, errprob):
+# def add_error_model(qasm_f_path, errprob):
 
-    error_model = "error_model depolarizing_channel, " + str(errprob)
+#     error_model = "error_model depolarizing_channel, " + str(errprob)
 
-    add2qasm(qasm_f_path, "qubits ", error_model)
+#     add2qasm(qasm_f_path, "qubits ", error_model)
 
 
-def add2qasm(qasm_f_path, before, after):
-    # Look for some regular expression in a file (before) and add something new after it in a copy of this file
+# def add2qasm(qasm_f_path, before, after):
+#     # Look for some regular expression in a file (before) and add something new after it in a copy of this file
 
-    i = open(qasm_f_path, "r")
-    o = open("."+qasm_f_path+"~", "w")
-    for line in i.readlines():
-        if re.search(before, line):
-            o.write(line+"\n"+after)
-        else:
-            o.write(line)
+#     i = open(qasm_f_path, "r")
+#     o = open("."+qasm_f_path+"~", "w")
+#     for line in i.readlines():
+#         if re.search(before, line):
+#             o.write(line+"\n"+after)
+#         else:
+#             o.write(line)
 
 
 def fidelity(expected, actual):
