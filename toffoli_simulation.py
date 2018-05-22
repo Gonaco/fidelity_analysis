@@ -32,11 +32,11 @@ for i in range(N_exp):
     c1 = qx.get_measurement_outcome(1)
     c2 = qx.get_measurement_outcome(2)
 
-    print("{} {} {}\n".format(c0, c1, c2))
+    print("{} {} {}\n".format(c2, c1, c0))
 
     print(qx.get_state())
 
-    sigma_states = np.array([c0, c1, c2], dtype=int)
+    sigma_states = np.array([c2, c1, c0], dtype=int)
     state_n = int("".join(map(str, sigma_states)), 2)
     sigma = qt.fock(d_hilbert_spc, state_n)
     f = qt.metrics.fidelity(rho, sigma)
