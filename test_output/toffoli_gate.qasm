@@ -5,9 +5,6 @@ qubits 3
 load_state toffoli_state.qst
 
 .toffoli_gate
-   prepz q0
-   prepz q1
-   prepz q2
    tdag q0
    tdag q1
    h q2
