@@ -87,11 +87,11 @@ def fidelity(expected, actual):
     else:
         # Simple calculation
 
-        f = np.vdot(expected, actual)
+        f = np.absolute(np.vdot(expected, actual))**2
 
-    print(f.real)
+    print(f)
 
-    return f.real
+    return f
 
 
 def probability_of_success(success_registry, N_exp):
