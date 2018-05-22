@@ -21,6 +21,9 @@ def analysis():
         measurement, q_state = qx_simulation(
             "test_output/toffoli_gate_error.qasm", 3)
 
+        print(expected_measurement)
+        print(measurement)
+
         succes_registry[i] = 1 if measurement == expected_measurement else 0
 
         fidelity_registry[i] = fidelity(expected_q_state, q_state)
@@ -34,7 +37,6 @@ def output_quantum_state(q_state, N_qubits):
     # Defines the quantum state based on the output string of QX get_state() function
 
     m = re.search(r"\(([\+\-]\d[\.\d]*),([\+\-]\d[\.\d]*)\) \|(\d+)>", q_state)
-    print(m)
     amplitude = complex(float(m.group(1)), float(m.group(2)))
 
     base_state = np.zeros(2**N_qubits)
@@ -108,8 +110,10 @@ def qx_simulation(qasm_f_path, N_qubits):
         c_buff.append(qx.get_measurement_outcome(q))
 
     measurement = np.array(c_buff[::-1], dtype=float)
-    print(qx.get_state())
     q_state = output_quantum_state(qx.get_state(), N_qubits)
+
+    print(measurement)
+    print(q_state)
 
     return q_state, measurement
 
