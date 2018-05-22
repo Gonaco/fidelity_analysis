@@ -33,6 +33,7 @@ def output_quantum_state(q_state):
     # Defines the quantum state based on the output string of QX get_state() function
 
     m = re.search(r"\(([\+\-]\d\.\d+),([\+\-]\d\.\d+)\) \|(\d+)>", q_state)
+    print(m)
     amplitude = complex(float(m.group(1)), float(m.group(2)))
 
     base_state = np.zeros(2**N_qubits)
@@ -103,9 +104,10 @@ def qx_simulation(qasm_f_path, N_qubits):
     # Measure
     c_buff = []
     for q in range(N_qubits-1):
-        c_buff.append(qx.get_measurement_outcome(i))
+        c_buff.append(qx.get_measurement_outcome(q))
 
     measurement = np.array(c_buff[::-1], dtype=float)
+    print(qx.get_state)
     q_state = output_quantum_state(qx.get_state())
 
     return q_state, measurement
