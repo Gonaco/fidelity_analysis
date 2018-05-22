@@ -24,7 +24,7 @@ def analysis():
         print(expected_measurement)
         print(measurement)
 
-        succes_registry[i] = 1 if np.array_equal(
+        success_registry[i] = 1 if np.array_equal(
             measurement, expected_measurement) else 0
 
         fidelity_registry[i] = fidelity(expected_q_state, q_state)
@@ -112,6 +112,7 @@ def qx_simulation(qasm_f_path, N_qubits):
         c_buff.append(qx.get_measurement_outcome(q))
 
     measurement = np.array(c_buff[::-1], dtype=float)
+    print(qx.get_state())
     q_state = output_quantum_state(qx.get_state(), N_qubits)
 
     print(measurement)
