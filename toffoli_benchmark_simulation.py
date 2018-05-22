@@ -32,10 +32,12 @@ def analysis():
 
         fidelity_registry.append(fidelity(expected_q_state, q_state))
 
+        if fidelity_registry[i] - success_registry[i] not = 0:
+            input("Fidelity and Success not equal")
+
     print(probability_of_success(success_registry, N_exp))
     print(fidelity_registry)
     print(np.mean(fidelity_registry))
-    print(np.array(fidelity_registry)-np.array(success_registry))
 
 
 def output_quantum_state(q_state, N_qubits):
