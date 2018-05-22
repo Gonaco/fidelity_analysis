@@ -29,7 +29,7 @@ def analysis():
         print(probability_of_success(succes_registry, N_exp))
 
 
-def output_quantum_state(q_state):
+def output_quantum_state(q_state, N_qubits):
     # Defines the quantum state based on the output string of QX get_state() function
 
     m = re.search(r"\(([\+\-]\d\.\d+),([\+\-]\d\.\d+)\) \|(\d+)>", q_state)
@@ -108,7 +108,7 @@ def qx_simulation(qasm_f_path, N_qubits):
 
     measurement = np.array(c_buff[::-1], dtype=float)
     print(qx.get_state)
-    q_state = output_quantum_state(qx.get_state())
+    q_state = output_quantum_state(qx.get_state(), N_qubits)
 
     return q_state, measurement
 
