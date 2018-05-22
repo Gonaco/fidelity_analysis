@@ -24,10 +24,10 @@ def analysis():
         print(expected_measurement)
         print(measurement)
 
-        success_registry[i] = 1 if np.array_equal(
-            measurement, expected_measurement) else 0
+        success_registry.append(1 if np.array_equal(
+            measurement, expected_measurement) else 0)
 
-        fidelity_registry[i] = fidelity(expected_q_state, q_state)
+        fidelity_registry.append(fidelity(expected_q_state, q_state))
 
         print(success_registry)
         print(fidelity_registry)
