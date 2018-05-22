@@ -38,7 +38,7 @@ def output_quantum_state(q_state, N_qubits):
     # Defines the quantum state based on the output string of QX get_state() function
 
     m = re.search(
-        r"\(([\+\-]\d[\.\d]*),([\+\-]\d[\.\de-]*)\) \|(\d+)>", q_state)
+        r"\(([\+\-]\d[\.\de-]*),([\+\-]\d[\.\de-]*)\) \|(\d+)>", q_state)
     amplitude = complex(float(m.group(1)), float(m.group(2)))
 
     base_state = np.zeros(2**N_qubits)
