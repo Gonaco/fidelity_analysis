@@ -37,9 +37,9 @@ def output_quantum_state(q_state, N_qubits):
     amplitude = complex(float(m.group(1)), float(m.group(2)))
 
     base_state = np.zeros(2**N_qubits)
-    base_state[int(m.group(3), 2)] = amplitude
+    base_state[int(m.group(3), 2)] = 1
 
-    return base_state
+    return amplitude*base_state
 
 
 def add_error_model(qasm_f_path, errprob):
