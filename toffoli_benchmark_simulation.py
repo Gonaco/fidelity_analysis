@@ -35,6 +35,7 @@ def analysis():
     print(probability_of_success(success_registry, N_exp))
     print(fidelity_registry)
     print(np.mean(fidelity_registry))
+    print(fidelity_registry-success_registry)
 
 
 def output_quantum_state(q_state, N_qubits):
