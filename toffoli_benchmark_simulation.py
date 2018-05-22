@@ -33,6 +33,7 @@ def analysis():
         fidelity_registry.append(fidelity(expected_q_state, q_state))
 
     print(probability_of_success(success_registry, N_exp))
+    print(fidelity_registry)
 
 
 def output_quantum_state(q_state, N_qubits):
@@ -88,9 +89,9 @@ def fidelity(expected, actual):
 
         f = np.vdot(expected, actual)
 
-    print(f)
+    print(f.real)
 
-    return f
+    return f.real
 
 
 def probability_of_success(success_registry, N_exp):
