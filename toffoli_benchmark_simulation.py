@@ -2,7 +2,7 @@ import os
 import re
 
 import numpy as np
-import qxelerator
+import qxelarator
 
 
 def analysis():
@@ -12,13 +12,13 @@ def analysis():
     N_exp = 1000
     qasm_f_path = "test_output/toffoli_gate.qasm"
 
-    expected_measurement, expected_q_state = qx_simulation(qasm_f_path)
+    expected_measurement, expected_q_state = qx_simulation(qasm_f_path, 3)
 
     add_error_model(qasm_f_path, 0.01)
 
     for i in range(N_exp):
 
-        measurement, q_state = qx_simulation("."+qasm_f_path+"~")
+        measurement, q_state = qx_simulation("."+qasm_f_path+"~", 3)
 
         succes_registry[i] = 1 if measurement == expected_measurement else 0
 
@@ -90,22 +90,19 @@ def probability_of_success(success_registry, N_exp):
     return sum(success_registry)/N_exp
 
 
-def qx_simulation(qasm_f_path):
+def qx_simulation(qasm_f_path, N_qubits):
 
     qx = qxelarator.QX()
-
     qx.set(qasm_f_path)
 
     # Check all possible states?
     # for k in range(2**self.total):
 
-    print("Experiment {}".format(i))
-    print("-")
     qx.execute()                            # execute
 
     # Measure
     c_buff = []
-    for q in range(self.N_qubits):
+    for q in range(N_qubits-1):
         c_buff.append(qx.get_measurement_outcome(i))
 
     measurement = np.array(c_buff[::-1], dtype=float)
