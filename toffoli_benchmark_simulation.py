@@ -32,7 +32,7 @@ def analysis():
 def output_quantum_state(q_state, N_qubits):
     # Defines the quantum state based on the output string of QX get_state() function
 
-    m = re.search(r"\(([\+\-]\d\.\d+),([\+\-]\d\.\d+)\) \|(\d+)>", q_state)
+    m = re.search(r"\(([\+\-]\d[\.\d]*),([\+\-]\d[\.\d]*)\) \|(\d+)>", q_state)
     print(m)
     amplitude = complex(float(m.group(1)), float(m.group(2)))
 
