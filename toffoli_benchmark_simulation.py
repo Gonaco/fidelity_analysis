@@ -91,7 +91,7 @@ def fidelity(expected, actual):
 
     print(f)
 
-    return np.around(f, decimals=6)
+    return np.around(f, decimals=5)
 
 
 def probability_of_success(success_registry, N_exp):
