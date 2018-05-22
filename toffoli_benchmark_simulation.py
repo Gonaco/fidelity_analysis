@@ -12,14 +12,17 @@ def analysis():
     N_exp = 1000
     qasm_f_path = "test_output/toffoli_gate.qasm"
 
-    expected_measurement, expected_q_state = qx_simulation(qasm_f_path, 3)
+    expected_q_state, expected_measurement = qx_simulation(qasm_f_path, 3)
 
     # add_error_model(qasm_f_path, 0.01)
 
     for i in range(N_exp):
 
-        measurement, q_state = qx_simulation(
+        q_state, measurement = qx_simulation(
             "test_output/toffoli_gate_error.qasm", 3)
+
+        print(expected_q_state)
+        print(q_state)
 
         print(expected_measurement)
         print(measurement)
@@ -114,9 +117,6 @@ def qx_simulation(qasm_f_path, N_qubits):
     measurement = np.array(c_buff[::-1], dtype=float)
     print(qx.get_state())
     q_state = output_quantum_state(qx.get_state(), N_qubits)
-
-    print(measurement)
-    print(q_state)
 
     return q_state, measurement
 
