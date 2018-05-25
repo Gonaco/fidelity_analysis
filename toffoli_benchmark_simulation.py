@@ -5,39 +5,56 @@ import numpy as np
 import qxelarator
 
 
-def analysis():
+def analysis(N_qubits, all_states_matrix):
 
     success_registry = []
     fidelity_registry = []
     N_exp = 1000
     qasm_f_path = "test_output/toffoli_gate.qasm"
 
-    expected_q_state, expected_measurement = qx_simulation(qasm_f_path, 3)
+    expected_q_state, expected_measurement = qx_simulation(
+        qasm_f_path, N_qubits)
 
     # add_error_model(qasm_f_path, 0.01)
 
     for i in range(N_exp):
 
         q_state, measurement = qx_simulation(
-            "test_output/toffoli_gate_error.qasm", 3)
+            "test_output/toffoli_gate_error.qasm", N_qubits)
 
-        print(expected_q_state)
-        print(q_state)
+        # print(expected_q_state)
+        # print(q_state)
 
         print(expected_measurement)
         print(measurement)
+
+        all_states_matrix[measurement, expected_measurement] = 1/N_exp
 
         success_registry.append(1 if np.array_equal(
             measurement, expected_measurement) else 0)
 
         fidelity_registry.append(fidelity(expected_q_state, q_state))
 
-        if fidelity_registry[i] - success_registry[i] != 0:
-            input("Fidelity and Success not equal")
+        # if fidelity_registry[i] - success_registry[i] != 0:
+        #     input("Fidelity and Success not equal")
 
-    print(probability_of_success(success_registry, N_exp))
-    print(fidelity_registry)
-    print(np.mean(fidelity_registry))
+    # print(probability_of_success(success_registry, N_exp))
+    # print(fidelity_registry)
+    # print(np.mean(fidelity_registry))
+
+    return probability_of_success(success_registry, N_exp), all_states_matrix
+
+
+def all_states_analysis(N_qubits):
+
+    tomography_matrix = np.zeros((2**N_qubits, 2**N_qubits))
+
+    for q in range(2**N_qubits):
+
+        all_inpt_f(N_qubits, q)
+        prob_succ, tomography_matrix = analysis(N_qubits, tomography_matrix)
+        print(N_qubits)
+        print(tomography_matrix)
 
 
 def output_quantum_state(q_state, N_qubits):
@@ -70,6 +87,13 @@ def output_quantum_state(q_state, N_qubits):
 #             o.write(line+"\n"+after)
 #         else:
 #             o.write(line)
+
+def all_inpt_f(N_qubits, init_state):
+
+    init_state_file = "test_output/toffoli_state.qst"
+
+    with open(init_state_file, "w") as f:
+        f.write("1.0 0.0 |"+format(init_state, "0"+str(N_qubits)+"b")+">")
 
 
 def fidelity(expected, actual):
@@ -126,4 +150,4 @@ def qx_simulation(qasm_f_path, N_qubits):
     return q_state, measurement
 
 
-analysis()
+all_states_analysis(3)
