@@ -32,7 +32,7 @@ def analysis(N_qubits, all_states_matrix):
                                 for e in expected_measurement.tolist()), 2)
         m_int = int(''.join(str(int(e)) for e in measurement.tolist()), 2)
 
-        all_states_matrix[measurement, expected_measurement] = 1/N_exp
+        all_states_matrix[exp_m_int, m_int] = 1/N_exp
 
         success_registry.append(1 if np.array_equal(
             measurement, expected_measurement) else 0)
