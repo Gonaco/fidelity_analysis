@@ -59,6 +59,9 @@ def all_states_analysis(N_qubits):
         all_inpt_f(N_qubits, q)
         prob_succ, tomography_matrix = analysis(N_qubits, tomography_matrix)
         print(tomography_matrix)
+        input()
+
+    print(tomography_matrix)
 
 
 def output_quantum_state(q_state, N_qubits):
