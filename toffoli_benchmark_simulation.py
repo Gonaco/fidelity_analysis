@@ -28,9 +28,9 @@ def analysis(N_qubits, all_states_matrix):
         print(expected_measurement)
         print(measurement)
 
-        exp_m_int = int(''.join(str(e)
+        exp_m_int = int(''.join(str(int(e))
                                 for e in expected_measurement.tolist()), 2)
-        m_int = int(''.join(str(e) for e in measurement.tolist()), 2)
+        m_int = int(''.join(str(int(e)) for e in measurement.tolist()), 2)
 
         all_states_matrix[measurement, expected_measurement] = 1/N_exp
 
