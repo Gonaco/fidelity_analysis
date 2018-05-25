@@ -28,6 +28,9 @@ def analysis(N_qubits, all_states_matrix):
         print(expected_measurement)
         print(measurement)
 
+        print("".join(item) for item in measurement.astype(str))
+        print("".join(item) for item in expected_measurement.astype(str))
+
         all_states_matrix[measurement, expected_measurement] = 1/N_exp
 
         success_registry.append(1 if np.array_equal(
