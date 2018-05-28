@@ -5,10 +5,9 @@ import numpy as np
 import qxelarator
 
 import matplotlib
-# import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 matplotlib.use('Agg')
-plt = matplotlib.pyplot
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 
 def analysis(N_qubits, all_states_matrix):
