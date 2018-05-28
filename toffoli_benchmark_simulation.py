@@ -6,6 +6,7 @@ import qxelarator
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+matplotlib.use('Agg')
 
 
 def analysis(N_qubits, all_states_matrix):
@@ -92,6 +93,7 @@ def all_states_analysis(N_qubits):
     # ax.set_zlabel('Occurrence')
 
     plt.show()
+    plt.savefig('tomography_graph')
 
 
 def output_quantum_state(q_state, N_qubits):
