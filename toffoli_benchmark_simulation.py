@@ -84,11 +84,11 @@ def graph(N_qubits, matrix):
 
     xpos = xpos.flatten()   # Convert positions to 1D array
     ypos = ypos.flatten()
-    zpos = tomography_matrix
+    zpos = matrix
 
     dx = 0.5 * np.ones_like(zpos)
     dy = dx.copy()
-    dz = tomography_matrix.flatten()
+    dz = matrix.flatten()
 
     print(xpos, ypos, zpos, dx, dy, dz)
 
