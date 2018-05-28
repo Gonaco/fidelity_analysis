@@ -4,6 +4,9 @@ import re
 import numpy as np
 import qxelarator
 
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
 
 def analysis(N_qubits, all_states_matrix):
 
@@ -63,6 +66,24 @@ def all_states_analysis(N_qubits):
 
     print(tomography_matrix)
 
+    fig = plt.figure(figsize=(8, 3))
+    ax = fig.add_subplot(121, projection='3d')
+    x = np.arange(2**N_qubits)
+    y = np.arange(2**N_qubits)
+    xpos, ypos = np.meshgrid(x+0.25, y+0.25)
+
+    # axis = ['a','b','c','d','e']
+
+    xpos = xpos.flatten()   # Convert positions to 1D array
+    ypos = ypos.flatten()
+    zpos = np.zeros(2**N_qubits)
+
+    dx = 0.5 * np.ones_like(zpos)
+    dy = dx.copy()
+    dz = tomography_matrix.flatten()
+
+    ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='b')
+
 
 def output_quantum_state(q_state, N_qubits):
     # Defines the quantum state based on the output string of QX get_state() function
@@ -100,7 +121,8 @@ def all_inpt_f(N_qubits, init_state):
     init_state_file = "test_output/toffoli_state.qst"
 
     with open(init_state_file, "w") as f:
-        f.write("1.0 0.0 |"+format(init_state, "0"+str(N_qubits)+"b")+">")
+        f.write("1.0 0.0 |"+format(init_state,
+                                   "0"+str(N_qubits)+"b")[::-1]+">")
 
 
 def fidelity(expected, actual):
