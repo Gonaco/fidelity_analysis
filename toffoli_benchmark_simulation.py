@@ -141,8 +141,8 @@ def all_inpt_f(N_qubits, init_state):
     init_state_file = "test_output/toffoli_state.qst"
 
     with open(init_state_file, "w") as f:
-        f.write("1.0 0.0 |"+format(init_state,
-                                   "0"+str(N_qubits)+"b")[::-1]+">")
+        f.write("0.0 0.0 |000>\n 1.0 0.0 |"+format(init_state,
+                                                   "0"+str(N_qubits)+"b")[::-1]+">")
 
 
 def fidelity(expected, actual):
