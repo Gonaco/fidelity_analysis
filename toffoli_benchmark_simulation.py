@@ -78,7 +78,7 @@ def graph(N_qubits, matrix):
     # ax = fig.add_subplot(121, projection='3d')
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
-    xpos, ypos = np.meshgrid(x+0.25, y+0.25)
+    xpos, ypos = np.meshgrid(x, y)
 
     # axis = ['a','b','c','d','e']
 
