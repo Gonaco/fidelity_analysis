@@ -68,6 +68,11 @@ def all_states_analysis(N_qubits):
 
     print(tomography_matrix)
 
+    graph(N_qubits, tomography_matrix)
+
+
+def graph(N_qubits, matrix):
+
     fig = plt.figure()
     ax = Axes3D(fig)
     # ax = fig.add_subplot(121, projection='3d')
@@ -79,11 +84,13 @@ def all_states_analysis(N_qubits):
 
     xpos = xpos.flatten()   # Convert positions to 1D array
     ypos = ypos.flatten()
-    zpos = np.zeros(2**N_qubits)
+    zpos = tomography_matrix
 
     dx = 0.5 * np.ones_like(zpos)
     dy = dx.copy()
     dz = tomography_matrix.flatten()
+
+    print(xpos, ypos, zpos, dx, dy, dz)
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz)
 
