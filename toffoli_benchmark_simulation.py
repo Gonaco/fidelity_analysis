@@ -84,6 +84,15 @@ def all_states_analysis(N_qubits):
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='b')
 
+    # #sh()
+    # ax.w_xaxis.set_ticklabels(column_names)
+    # ax.w_yaxis.set_ticklabels(row_names)
+    # ax.set_xlabel('Letter')
+    # ax.set_ylabel('Day')
+    # ax.set_zlabel('Occurrence')
+
+    plt.show()
+
 
 def output_quantum_state(q_state, N_qubits):
     # Defines the quantum state based on the output string of QX get_state() function
