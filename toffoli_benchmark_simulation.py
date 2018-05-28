@@ -68,8 +68,9 @@ def all_states_analysis(N_qubits):
 
     print(tomography_matrix)
 
-    fig = plt.figure(figsize=(8, 3))
-    ax = fig.add_subplot(121, projection='3d')
+    fig = plt.figure()
+    ax = Axes3D(fig)
+    # ax = fig.add_subplot(121, projection='3d')
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
     xpos, ypos = np.meshgrid(x+0.25, y+0.25)
@@ -84,7 +85,7 @@ def all_states_analysis(N_qubits):
     dy = dx.copy()
     dz = tomography_matrix.flatten()
 
-    ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color='b')
+    ax.bar3d(xpos, ypos, zpos, dx, dy, dz)
 
     # #sh()
     # ax.w_xaxis.set_ticklabels(column_names)
@@ -93,7 +94,7 @@ def all_states_analysis(N_qubits):
     # ax.set_ylabel('Day')
     # ax.set_zlabel('Occurrence')
 
-    plt.show()
+    # plt.show()
     plt.savefig('tomography_graph')
 
 
