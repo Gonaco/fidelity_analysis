@@ -87,6 +87,9 @@ def graph(N_qubits, matrix):
     # Tableau Colors
     ax.set_color_cycle(Tableau_20.mpl_colors)
 
+    # Background color
+    ax.set_facecolor("white")
+
     # Set perspective
     # ax.view_init(60, 35)
 
