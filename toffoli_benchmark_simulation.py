@@ -104,7 +104,7 @@ def graph(N_qubits, matrix):
     # cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
     cs = Cube1_20.mpl_colors[2:18:2] * 2**N_qubits
 
-    ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=cs)
+    ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=cs, shade=False)
 
     # sh()
     ax.w_xaxis.set_ticklabels(axis)
