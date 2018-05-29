@@ -7,8 +7,9 @@ import qxelarator
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-plt.style.use('seaborn-white')
+# plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
+from palettable.tableau import TableauMedium_10
 
 
 def analysis(N_qubits, all_states_matrix):
@@ -74,6 +75,7 @@ def graph(N_qubits, matrix):
 
     fig = plt.figure()
     ax = Axes3D(fig)
+    ax.set_color_cycle(TableauMedium_10.mpl_colors)
     # ax = fig.add_subplot(121, projection='3d')
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
