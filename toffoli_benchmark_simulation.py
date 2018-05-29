@@ -77,8 +77,8 @@ def graph(N_qubits, matrix):
     fig = plt.figure()
 
     # First graph (3D histogram)
-    ax = Axes3D(fig)
-    # ax = fig.add_subplot(121, projection='3d')
+    # ax = Axes3D(fig)
+    ax = fig.add_subplot(221, projection='3d')
 
     # Tableau Colors
     ax.set_color_cycle(Tableau_20.mpl_colors)
@@ -128,6 +128,8 @@ def graph(N_qubits, matrix):
     # Second plot. Heatmap
 
     ax2 = fig.add_subplot(223)
+
+    ax2.set_color_cycle(Cube1_20.mpl_colors)
 
     im = ax2.imshow(matrix)
 
