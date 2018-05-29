@@ -74,7 +74,7 @@ def all_states_analysis(N_qubits):
 
 def graph(N_qubits, matrix):
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(15, 15))
 
     # First graph (3D histogram)
     # ax = Axes3D(fig)
@@ -140,7 +140,7 @@ def graph(N_qubits, matrix):
 
     for i in range(2**N_qubits):
         for j in range(2**N_qubits):
-            text = ax2.text(j, i, matrix[i, j],
+            text = ax2.text(j, i, round(matrix[i, j], 2),
                             ha="center", va="center", color="w")
 
     ax2.set_xlabel("Actual Results")
