@@ -9,7 +9,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 # plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
-from palettable.tableau import TableauMedium_10
+from palettable.tableau import Tableau_20
 
 
 def analysis(N_qubits, all_states_matrix):
@@ -71,11 +71,11 @@ def all_states_analysis(N_qubits):
     graph(N_qubits, tomography_matrix)
 
 
-def graph(N_qubits, matrix):
+gitdef graph(N_qubits, matrix):
 
     fig = plt.figure()
     ax = Axes3D(fig)
-    ax.set_color_cycle(TableauMedium_10.mpl_colors)
+    ax.set_prop_cycle(TableauMedium_10.mpl_colors)
     # ax = fig.add_subplot(121, projection='3d')
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
@@ -140,8 +140,9 @@ def all_inpt_f(N_qubits, init_state):
     init_state_file = "test_output/toffoli_state.qst"
 
     with open(init_state_file, "w") as f:
-        f.write("0.0 0.0 |000>\n 1.0 0.0 |"+format(init_state,
-                                                   "0"+str(N_qubits)+"b")[::-1]+">")
+        # f.write("0.0 0.0 |000>\n 1.0 0.0 |"+format(init_state,
+        #                                            "0"+str(N_qubits)+"b")[::-1]+">")
+        f.write(format(init_state, "0"+str(N_qubits)+"b")[::-1]+">")
 
 
 def fidelity(expected, actual):
