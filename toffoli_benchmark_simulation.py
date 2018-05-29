@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 # plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
 from palettable.tableau import Tableau_20
+from palettable.mycarta import CubeYF_20
 
 
 def analysis(N_qubits, all_states_matrix):
@@ -100,7 +101,8 @@ def graph(N_qubits, matrix):
     dy = dx.copy()
     dz = matrix.flatten()
 
-    cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
+    # cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
+    cs = CubeYF_20.mpl_colors[5:20:2]
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=cs)
 
