@@ -71,7 +71,7 @@ def all_states_analysis(N_qubits):
     graph(N_qubits, tomography_matrix)
 
 
-gitdef graph(N_qubits, matrix):
+def graph(N_qubits, matrix):
 
     fig = plt.figure()
     ax = Axes3D(fig)
@@ -87,7 +87,7 @@ gitdef graph(N_qubits, matrix):
     ypos = ypos.flatten()
     zpos = np.zeros(2**(2*N_qubits))
 
-    dx = np.ones_like(zpos)
+    dx = 0.5 * np.ones_like(zpos)
     dy = dx.copy()
     dz = matrix.flatten()
 
@@ -140,9 +140,8 @@ def all_inpt_f(N_qubits, init_state):
     init_state_file = "test_output/toffoli_state.qst"
 
     with open(init_state_file, "w") as f:
-        # f.write("0.0 0.0 |000>\n 1.0 0.0 |"+format(init_state,
-        #                                            "0"+str(N_qubits)+"b")[::-1]+">")
-        f.write(format(init_state, "0"+str(N_qubits)+"b")[::-1]+">")
+        f.write("0.0 0.0 |"+format(0, +"0"+str(N_qubits)+"b")+">\n"+"1.0 0.0 |"+format(init_state,
+                                                                                       "0"+str(N_qubits)+"b")[::-1]+">")
 
 
 def fidelity(expected, actual):
