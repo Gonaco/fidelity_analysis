@@ -75,7 +75,7 @@ def all_states_analysis(N_qubits):
 def graph(N_qubits, matrix):
 
     fig = plt.figure()
-    ax = Axes3D(fig, linewidth=2)
+    ax = Axes3D(fig)
     # ax = fig.add_subplot(121, projection='3d')
 
     # Remove Chart Junk
