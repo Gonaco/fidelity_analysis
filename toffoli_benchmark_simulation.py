@@ -102,7 +102,7 @@ def graph(N_qubits, matrix):
 
     cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
 
-    ax.bar3d(xpos, ypos, zpos, dx, dy, dz)
+    ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=cs)
 
     # sh()
     ax.w_xaxis.set_ticklabels(axis)
@@ -111,7 +111,7 @@ def graph(N_qubits, matrix):
     # Ensure that the axis ticks only show up on the bottom and left of the plot.
     # Ticks on the right and top of the plot are generally unnecessary chartjunk.
     ax.get_xaxis().tick_bottom()
-    ax.get_yaxis().tick_left()
+    # ax.get_yaxis().tick_left()
 
     ax.set_xlabel("Actual Results")
     ax.set_ylabel("Expected Results (Correct)")
