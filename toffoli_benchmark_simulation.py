@@ -75,8 +75,17 @@ def graph(N_qubits, matrix):
 
     fig = plt.figure()
     ax = Axes3D(fig)
-    ax.set_color_cycle(Tableau_20.mpl_colors)
     # ax = fig.add_subplot(121, projection='3d')
+
+    # Remove Chart Junk
+    ax.spines["top"].set_visible(False)
+    ax.spines["bottom"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_visible(False)
+
+    # Tableau Colors
+    ax.set_color_cycle(Tableau_20.mpl_colors)
+
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
     xpos, ypos = np.meshgrid(x, y)
@@ -87,15 +96,23 @@ def graph(N_qubits, matrix):
     ypos = ypos.flatten()
     zpos = np.zeros(2**(2*N_qubits))
 
-    dx = 0.5 * np.ones_like(zpos)
+    dx = 0.75 * np.ones_like(zpos)
     dy = dx.copy()
     dz = matrix.flatten()
+
+    cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz)
 
     # sh()
     ax.w_xaxis.set_ticklabels(axis)
     ax.w_yaxis.set_ticklabels(axis)
+
+    # Ensure that the axis ticks only show up on the bottom and left of the plot.
+    # Ticks on the right and top of the plot are generally unnecessary chartjunk.
+    ax.get_xaxis().tick_bottom()
+    ax.get_yaxis().tick_left()
+
     ax.set_xlabel("Actual Results")
     ax.set_ylabel("Expected Results (Correct)")
     ax.set_zlabel("Prob. Success")
