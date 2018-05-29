@@ -80,11 +80,11 @@ def graph(N_qubits, matrix):
 
     # axis = ['a','b','c','d','e']
 
-    # xpos = xpos.flatten()   # Convert positions to 1D array
-    # ypos = ypos.flatten()
-    zpos = matrix
+    xpos = xpos.flatten()   # Convert positions to 1D array
+    ypos = ypos.flatten()
+    zpos = np.zeros(2**(2*N_qubits))
 
-    dx = 0.5 * np.ones_like(zpos)
+    dx = np.ones_like(zpos)
     dy = dx.copy()
     dz = matrix.flatten()
 
