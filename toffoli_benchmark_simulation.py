@@ -75,6 +75,8 @@ def all_states_analysis(N_qubits):
 def graph(N_qubits, matrix):
 
     fig = plt.figure()
+
+    # First graph (3D histogram)
     ax = Axes3D(fig)
     # ax = fig.add_subplot(121, projection='3d')
 
@@ -123,7 +125,30 @@ def graph(N_qubits, matrix):
     ax.set_ylabel("Expected Results (Correct)")
     ax.set_zlabel("Prob. Success")
 
+    # Second plot. Heatmap
+
+    ax2 = fig.add_subplot(223)
+
+    im = ax2.imshow(matrix)
+
+    ax2.set_xticks(np.arange(2**N_qubits))
+    ax2.set_yticks(np.arange(2**N_qubits))
+    ax2.set_xticklabels(axis)
+    ax2.set_yticklabels(axis)
+
+    # Loop over data dimensions and create text annotations.
+    for i in range(len(vegetables)):
+        for j in range(len(farmers)):
+            text = ax.text(j, i, harvest[i, j],
+                           ha="center", va="center", color="w")
+
+    ax2.set_xlabel("Actual Results")
+    ax2.set_ylabel("Expected Results (Correct)")
+    ax2.set_title("Prob. Success")
+
     # plt.show()
+    fig.tight_layout()
+
     plt.savefig("tomography_graph")
 
 
