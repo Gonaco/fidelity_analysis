@@ -102,7 +102,7 @@ def graph(N_qubits, matrix):
     dz = matrix.flatten()
 
     # cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
-    cs = CubeYF_20.mpl_colors[5:20:2]
+    cs = CubeYF_20.mpl_colors[5:20:2] * 2**N_qubits
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=cs)
 
