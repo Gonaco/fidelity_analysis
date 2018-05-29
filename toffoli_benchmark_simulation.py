@@ -108,7 +108,7 @@ def graph(N_qubits, matrix):
     cs = Cube1_20.mpl_colors[2:18:2] * 2**N_qubits
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
-             color=cs, shade=False, edgecolor="gray")
+             color=cs, shade=False, edgecolor="k")
 
     # ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
     #          cmap=Cube1_20.mpl_colormap, edgecolor='b')
