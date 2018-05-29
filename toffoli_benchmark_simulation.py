@@ -7,7 +7,7 @@ import qxelarator
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-# plt.style.use('seaborn-white')
+plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
 from palettable.tableau import Tableau_20
 from palettable.mycarta import Cube1_20
@@ -77,12 +77,6 @@ def graph(N_qubits, matrix):
     fig = plt.figure()
     ax = Axes3D(fig)
     # ax = fig.add_subplot(121, projection='3d')
-
-    # Remove Chart Junk
-    ax.spines["top"].set_visible(False)
-    ax.spines["bottom"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.spines["left"].set_visible(False)
 
     # Tableau Colors
     ax.set_color_cycle(Tableau_20.mpl_colors)
