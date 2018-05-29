@@ -129,9 +129,7 @@ def graph(N_qubits, matrix):
 
     ax2 = fig.add_subplot(223)
 
-    ax2.set_color_cycle(Cube1_20.mpl_colors)
-
-    im = ax2.imshow(matrix)
+    im = ax2.imshow(matrix, cmap=Cube1_20.mpl_colormap)
 
     ax2.set_xticks(np.arange(2**N_qubits))
     ax2.set_yticks(np.arange(2**N_qubits))
