@@ -84,6 +84,11 @@ def graph(N_qubits, matrix):
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_visible(False)
 
+    # Axis Lines thinner
+    # inc. width of x-axis and color it green
+    ax.axhline(linewidth=2, color="k")
+    ax.axvline(linewidth=2, color="k")
+
     # Tableau Colors
     ax.set_color_cycle(Tableau_20.mpl_colors)
 
@@ -108,7 +113,7 @@ def graph(N_qubits, matrix):
     cs = Cube1_20.mpl_colors[2:18:2] * 2**N_qubits
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
-             color=cs, shade=False, edgecolor='k')
+             color=cs, shade=False, edgecolor='k', rwidth=0.8)
 
     # ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
     #          cmap=Cube1_20.mpl_colormap, edgecolor='b')
