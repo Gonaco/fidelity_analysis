@@ -136,10 +136,9 @@ def graph(N_qubits, matrix):
     ax2.set_xticklabels(axis)
     ax2.set_yticklabels(axis)
 
-    # Loop over data dimensions and create text annotations.
-    for i in range(len(vegetables)):
-        for j in range(len(farmers)):
-            text = ax.text(j, i, harvest[i, j],
+    for i in range(2**N_qubits):
+        for j in range(2**N_qubits):
+            text = ax.text(j, i, matrix[i, j],
                            ha="center", va="center", color="w")
 
     ax2.set_xlabel("Actual Results")
