@@ -63,8 +63,6 @@ def all_states_analysis(N_qubits):
 
         all_inpt_f(N_qubits, q)
         prob_succ, tomography_matrix = analysis(N_qubits, tomography_matrix)
-        print(tomography_matrix)
-        input()
 
     print(tomography_matrix)
 
@@ -82,8 +80,8 @@ def graph(N_qubits, matrix):
 
     # axis = ['a','b','c','d','e']
 
-    xpos = xpos.flatten()   # Convert positions to 1D array
-    ypos = ypos.flatten()
+    # xpos = xpos.flatten()   # Convert positions to 1D array
+    # ypos = ypos.flatten()
     zpos = matrix
 
     dx = 0.5 * np.ones_like(zpos)
