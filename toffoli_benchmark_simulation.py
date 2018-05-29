@@ -78,7 +78,7 @@ def graph(N_qubits, matrix):
     y = np.arange(2**N_qubits)
     xpos, ypos = np.meshgrid(x, y)
 
-    # axis = ['a','b','c','d','e']
+    axis = [format(i, "0"+str(N_qubits)+"b") for i in range(2**N_qubits)]
 
     xpos = xpos.flatten()   # Convert positions to 1D array
     ypos = ypos.flatten()
@@ -92,15 +92,15 @@ def graph(N_qubits, matrix):
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz)
 
-    # #sh()
-    # ax.w_xaxis.set_ticklabels(column_names)
-    # ax.w_yaxis.set_ticklabels(row_names)
-    # ax.set_xlabel('Letter')
-    # ax.set_ylabel('Day')
-    # ax.set_zlabel('Occurrence')
+    # sh()
+    ax.w_xaxis.set_ticklabels(axis)
+    ax.w_yaxis.set_ticklabels(axis)
+    ax.set_xlabel("Actual Results")
+    ax.set_ylabel("Expected Results (Correct)")
+    ax.set_zlabel("Prob. Success")
 
     # plt.show()
-    plt.savefig('tomography_graph')
+    plt.savefig("tomography_graph")
 
 
 def output_quantum_state(q_state, N_qubits):
