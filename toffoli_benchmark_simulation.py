@@ -75,7 +75,7 @@ def all_states_analysis(N_qubits):
 def graph(N_qubits, matrix):
 
     fig = plt.figure()
-    ax = Axes3D(fig)
+    ax = Axes3D(fig, linewidth=2)
     # ax = fig.add_subplot(121, projection='3d')
 
     # Remove Chart Junk
@@ -83,11 +83,6 @@ def graph(N_qubits, matrix):
     ax.spines["bottom"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.spines["left"].set_visible(False)
-
-    # Axis Lines thinner
-    # inc. width of x-axis and color it green
-    ax.axhline(linewidth=2, color="k")
-    ax.axvline(linewidth=2, color="k")
 
     # Tableau Colors
     ax.set_color_cycle(Tableau_20.mpl_colors)
@@ -113,7 +108,7 @@ def graph(N_qubits, matrix):
     cs = Cube1_20.mpl_colors[2:18:2] * 2**N_qubits
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
-             color=cs, shade=False, edgecolor="k", linewidth=1)
+             color=cs, shade=False, edgecolor="k")
 
     # ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
     #          cmap=Cube1_20.mpl_colormap, edgecolor='b')
