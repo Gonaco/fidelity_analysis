@@ -74,11 +74,11 @@ def all_states_analysis(N_qubits):
 
 def graph(N_qubits, matrix):
 
-    fig = plt.figure(figsize=(15, 15))
+    fig = plt.figure(figsize=(10, 5))
 
     # First graph (3D histogram)
     # ax = Axes3D(fig)
-    ax = fig.add_subplot(221, projection='3d')
+    ax = fig.add_subplot(211, projection='3d')
 
     # Tableau Colors
     ax.set_color_cycle(Tableau_20.mpl_colors)
@@ -127,7 +127,7 @@ def graph(N_qubits, matrix):
 
     # Second plot. Heatmap
 
-    ax2 = fig.add_subplot(223)
+    ax2 = fig.add_subplot(212)
 
     im = ax2.imshow(matrix, cmap=Cube1_20.mpl_colormap)
 
@@ -141,8 +141,8 @@ def graph(N_qubits, matrix):
             text = ax2.text(j, i, round(matrix[i, j], 2),
                             ha="center", va="center", color="w")
 
-    ax2.set_xlabel("Actual Results")
-    ax2.set_ylabel("Expected Results (Correct)")
+    ax2.set_xlabel("Expected Results (Correct)")
+    ax2.set_ylabel("Actual Results")
     ax2.set_title("Prob. Success")
 
     # plt.show()
