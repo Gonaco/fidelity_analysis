@@ -75,7 +75,7 @@ def graph(N_qubits, matrix):
 
     fig = plt.figure()
     ax = Axes3D(fig)
-    ax.set_prop_cycle(TableauMedium_10.mpl_colors)
+    ax.set_prop_cycle(Tableau_20.mpl_colors)
     # ax = fig.add_subplot(121, projection='3d')
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
