@@ -7,6 +7,7 @@ import qxelarator
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
 
 
@@ -87,8 +88,6 @@ def graph(N_qubits, matrix):
     dx = np.ones_like(zpos)
     dy = dx.copy()
     dz = matrix.flatten()
-
-    print(xpos, ypos, zpos, dx, dy, dz)
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz)
 
