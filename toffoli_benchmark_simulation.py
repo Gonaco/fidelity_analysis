@@ -138,8 +138,8 @@ def graph(N_qubits, matrix):
 
     for i in range(2**N_qubits):
         for j in range(2**N_qubits):
-            text = ax.text(j, i, matrix[i, j],
-                           ha="center", va="center", color="w")
+            text = ax2.text(j, i, matrix[i, j],
+                            ha="center", va="center", color="w")
 
     ax2.set_xlabel("Actual Results")
     ax2.set_ylabel("Expected Results (Correct)")
