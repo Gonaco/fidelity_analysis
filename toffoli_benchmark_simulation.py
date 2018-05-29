@@ -74,7 +74,7 @@ def all_states_analysis(N_qubits):
 
 def graph(N_qubits, matrix):
 
-    fig = plt.figure(figsize=(10, 5))
+    fig = plt.figure(figsize=(5, 10))
 
     # First graph (3D histogram)
     # ax = Axes3D(fig)
