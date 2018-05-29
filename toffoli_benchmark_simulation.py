@@ -87,6 +87,9 @@ def graph(N_qubits, matrix):
     # Tableau Colors
     ax.set_color_cycle(Tableau_20.mpl_colors)
 
+    # Set perspective
+    ax.view_init(60, 35)
+
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
     xpos, ypos = np.meshgrid(x, y)
@@ -102,9 +105,12 @@ def graph(N_qubits, matrix):
     dz = matrix.flatten()
 
     # cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
-    cs = Cube1_20.mpl_colors[2:18:2] * 2**N_qubits
+    # cs = Cube1_20.mpl_colors[2:18:2] * 2**N_qubits
 
-    ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=cs, shade=False)
+    # ax.bar3d(xpos, ypos, zpos, dx, dy, dz, color=cs, shade=False)
+
+    ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
+             cmpa=Cube1_20.mpl_colors, edgecolor='b')
 
     # sh()
     ax.w_xaxis.set_ticklabels(axis)
