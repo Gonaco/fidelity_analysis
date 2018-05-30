@@ -5,12 +5,12 @@ qubits 3
 load_state toffoli_state.qst
 
 .toffoli_gate
-   tdag q0 | tdag q1 | h q2
+   { tdag q0 | tdag q1 | h q2 }
    cnot q2,q0
-   t q01 | cnot q1,q2
-   cnot q1,q0 | t q2
-   tdag q0 | cnot q1,q2
+   { t q0 | cnot q1,q2 }
+   { cnot q1,q0 | t q2 }
+   { tdag q0 | cnot q1,q2 }
    cnot q2,q0
-   t q0 | tdag q2
-   cnot q1,q0 | h q2
-   measure q0 | measure q1 | measure q2
+   { t q0 | tdag q2 }
+   { cnot q1,q0 | h q2 }
+   { measure q0 | measure q1 | measure q2 }
