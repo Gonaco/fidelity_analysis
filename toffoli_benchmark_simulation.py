@@ -9,9 +9,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
-from palettable.tableau import Tableau_20
 from palettable.mycarta import Cube1_20
-from palettable.matplotlib import Plasma_20
 
 
 def analysis(N_qubits, all_states_matrix):
@@ -107,11 +105,9 @@ def graph(N_qubits, matrix):
     ratio = int(20/(2**N_qubits))
     end = 2**N_qubits * ratio
     # cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
-    cs = Cube1_20.mpl_colors[:end:ratio] * 2**N_qubits
-    cs = sorted(cs, key=lambda x: x[0])
-    print(cs)
-    print(len(cs))
-    # cs = Cube1_20.mpl_colors[:end:ratio] * 2 ** N_qubits
+    cs_y = Cube1_20.mpl_colors[:end:ratio] * 2**N_qubits
+    order = [i for i in range(2**N_qubits)] * 2**N_qubits
+    cs_x = [x for _, x in sorted(zip(order, cs_y))]
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
              color=cs, shade=False, edgecolor="k")
