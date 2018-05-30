@@ -11,6 +11,7 @@ plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
 from palettable.tableau import Tableau_20
 from palettable.mycarta import Cube1_20
+from palettable.matplotlib import Plasma_20
 
 
 def analysis(N_qubits, all_states_matrix):
@@ -130,7 +131,7 @@ def graph(N_qubits, matrix):
     ax2 = fig.add_subplot(212)
 
     im = ax2.imshow(matrix)
-    cbar = ax2.figure.colorbar(im, ax=ax2)
+    cbar = ax2.figure.colorbar(im)
 
     ax2.set_xticks(np.arange(2**N_qubits))
     ax2.set_yticks(np.arange(2**N_qubits))
