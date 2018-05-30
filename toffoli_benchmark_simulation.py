@@ -74,11 +74,11 @@ def all_states_analysis(N_qubits):
 
 def graph(N_qubits, matrix):
 
-    fig = plt.figure(figsize=(5, 5))
+    fig = plt.figure(figsize=(7, 7))
 
     # First graph (3D histogram)
-    ax = Axes3D(fig)
-    # ax = fig.add_subplot(211, projection='3d')
+    # ax = Axes3D(fig)
+    ax = fig.add_subplot(111, projection='3d')
 
     # Tableau Colors
     # ax.set_color_cycle(Tableau_20.mpl_colors)
