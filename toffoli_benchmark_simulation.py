@@ -135,7 +135,7 @@ def graph(N_qubits, matrix):
 
     # Second plot. Heatmap
 
-    fig2 = plt.figure(figsize=(5, 5))
+    fig2 = plt.figure(figsize=(7, 7))
     ax2 = fig2.add_subplot(111)
 
     divider = make_axes_locatable(ax2)
@@ -143,7 +143,6 @@ def graph(N_qubits, matrix):
 
     im = ax2.imshow(matrix, cmap="jet")
     # im = ax2.imshow(matrix, cmap=Cube1_20.mpl_colormap)
-    # cbar = ax2.figure.colorbar(im, ax=ax2)
 
     ax2.set_xticks(np.arange(2**N_qubits))
     ax2.set_yticks(np.arange(2**N_qubits))
