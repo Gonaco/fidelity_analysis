@@ -107,8 +107,9 @@ def graph(N_qubits, matrix):
     ratio = int(20/(2**N_qubits))
     end = 2**N_qubits * ratio
     # cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
-    # cs = sorted(Cube1_20.mpl_colors * 2**N_qubits, key=lambda x: x[0])
-    cs = Cube1_20.mpl_colors[:end:ratio] * 2 ** N_qubits
+    cs = sorted(Cube1_20.mpl_colors * 2**N_qubits, key=lambda x: x[0])
+    print(cs)
+    # cs = Cube1_20.mpl_colors[:end:ratio] * 2 ** N_qubits
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
              color=cs, shade=False, edgecolor="k")
@@ -133,7 +134,7 @@ def graph(N_qubits, matrix):
 
     ax2 = fig.add_subplot(212)
 
-    im = ax2.imshow(matrix, cmap=Plasma_20.mpl_colormap)
+    im = ax2.imshow(matrix, cmap="jet")
     cbar = ax2.figure.colorbar(im)
 
     ax2.set_xticks(np.arange(2**N_qubits))
