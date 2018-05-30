@@ -108,7 +108,7 @@ def graph(N_qubits, matrix):
     end = 2**N_qubits * ratio
     # cs = Tableau_20.mpl_colors[:8] * 2**N_qubits
     # cs = sorted(Cube1_20.mpl_colors * 2**N_qubits, key=lambda x: x[0])
-    cs = Cube1_20.mpl_colors[:end:ratio]
+    cs = Cube1_20.mpl_colors[:end:ratio] * 2 ** N_qubits
 
     ax.bar3d(xpos, ypos, zpos, dx, dy, dz,
              color=cs, shade=False, edgecolor="k")
