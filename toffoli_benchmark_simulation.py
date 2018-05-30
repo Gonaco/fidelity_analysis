@@ -80,7 +80,7 @@ def graph(N_qubits, matrix):
     ax = fig.add_subplot(211, projection='3d')
 
     # Tableau Colors
-    ax.set_color_cycle(Tableau_20.mpl_colors)
+    # ax.set_color_cycle(Tableau_20.mpl_colors)
 
     # Background color
     ax.set_facecolor("white")
