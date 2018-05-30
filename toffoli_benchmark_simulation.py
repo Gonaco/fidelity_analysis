@@ -67,14 +67,48 @@ def analysis(N_qubits, all_states_matrix):
     return probability_of_success(success_registry, N_exp), all_states_matrix
 
 
+def quantumsim_analysis(N_qubits, all_states_matrix, init_state):
+
+    success_registry = []
+    fidelity_registry = []
+    N_exp = 1000
+    qasm_f_path = "test_output/toffoli_gate.qasm"
+
+    expected_q_state, expected_measurement = qx_simulation(
+        qasm_f_path, N_qubits)
+
+    # add_error_model(qasm_f_path, 0.01)
+
+    for i in range(N_exp):
+
+        measurement = quantumsim_simulation(error, init_state)
+
+        print(expected_measurement)
+        print(measurement)
+
+        exp_m_int = int(''.join(str(int(e))
+                                for e in expected_measurement.tolist()), 2)
+        m_int = int(''.join(str(int(e)) for e in measurement.tolist()), 2)
+
+        all_states_matrix[exp_m_int,
+                          m_int] = all_states_matrix[exp_m_int, m_int] + 1/N_exp
+
+        success_registry.append(1 if np.array_equal(
+            measurement, expected_measurement) else 0)
+
+        return probability_of_success(success_registry, N_exp), all_states_matrix
+
+
 def all_states_analysis(N_qubits):
 
     tomography_matrix = np.zeros((2**N_qubits, 2**N_qubits))
 
     for q in range(2**N_qubits):
 
-        all_inpt_f(N_qubits, q)
-        prob_succ, tomography_matrix = analysis(N_qubits, tomography_matrix)
+        init_state = all_inpt_f(N_qubits, q)
+        # prob_succ, tomography_matrix = analysis(N_qubits, tomography_matrix)
+        prob_succ, tomography_matrix = quantumsim_analysis(
+            N_qubits, all_states_matrix, init_state)
 
     print(tomography_matrix)
 
@@ -214,6 +248,8 @@ def all_inpt_f(N_qubits, init_state):
         f.write("0.0 0.0 |"+format(0, "0"+str(N_qubits)+"b")+">\n"+"1.0 0.0 |"+format(init_state,
                                                                                       "0"+str(N_qubits)+"b")[::-1]+">")
 
+    return format(init_state, "0"+str(N_qubits)+"b")
+
 
 def fidelity(expected, actual):
     # Fidelity calculation
@@ -271,10 +307,10 @@ def qx_simulation(qasm_f_path, N_qubits):
 # QUANTUMSIM ##################################################################
 
 
-def quantumsim_simulation(error):
+def quantumsim_simulation(error, init_state):
 
     # CIRCUIT DECLARATION
-    c = toffoli_gate_decomposition_circuit(10, 10, error)
+    c = toffoli_gate_decomposition_circuit(10, 10, error, init_state)
 
     # SIMULATING
     sdm = sparsedm.SparseDM(c.get_qubit_names())
@@ -298,7 +334,7 @@ def tdag(q, time):
     return RotateEuler(q, time=time, theta=0, phi=-np.pi/4, lamda=0)
 
 
-def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf, error):
+def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf, error, init_state):
     # create a circuit
     c = Circuit(title="toffoli_gate")
 
@@ -310,9 +346,10 @@ def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf, error):
     c.add_qubit("q4", q_t1, q_t2)
 
     # add gates
-    # c.add_gate(prepz("q0", time=1))
-    # c.add_gate(prepz("q1", time=1))
-    # c.add_gate(prepz("q2", time=1))
+    c.add_gate(ResetGate("q0", time=1, state=int(init_state[0])))
+    c.add_gate(ResetGate("q1", time=1, state=int(init_state[1])))
+    c.add_gate(ResetGate("q2", time=1, state=int(init_state[2])))
+
     c.add_gate(tdag("q0", time=3))
     c.add_gate(tdag("q1", time=3))
     c.add_gate(h("q2", time=3))
