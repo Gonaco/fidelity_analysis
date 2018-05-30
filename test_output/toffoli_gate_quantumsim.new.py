@@ -4,6 +4,7 @@ from quantumsim.circuit import uniform_noisy_sampler
 from quantumsim.circuit import CNOT as cnot
 from quantumsim.circuit import Hadamard as h
 from quantumsim.circuit import RotateEuler as RotateEuler
+from quantumsim.circuit import ResetGate as ResetGate
 import quantumsim.sparsedm as sparsedm
 
 # print("GPU is used:", sparsedm.using_gpu)
@@ -34,6 +35,11 @@ def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf):
     # c.add_gate(prepz("q0", time=1))
     # c.add_gate(prepz("q1", time=1))
     # c.add_gate(prepz("q2", time=1))
+
+    c.add_gate(ResetGate("q0", time=1, state=0))
+    c.add_gate(ResetGate("q1", time=1, state=0))
+    c.add_gate(ResetGate("q2", time=1, state=0))
+
     c.add_gate(tdag("q0", time=3))
     c.add_gate(tdag("q1", time=3))
     c.add_gate(h("q2", time=3))
