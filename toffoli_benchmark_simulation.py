@@ -74,11 +74,11 @@ def all_states_analysis(N_qubits):
 
 def graph(N_qubits, matrix):
 
-    fig = plt.figure(figsize=(5, 10))
+    fig = plt.figure(figsize=(5, 5))
 
     # First graph (3D histogram)
-    # ax = Axes3D(fig)
-    ax = fig.add_subplot(211, projection='3d')
+    ax = Axes3D(fig)
+    # ax = fig.add_subplot(211, projection='3d')
 
     # Tableau Colors
     # ax.set_color_cycle(Tableau_20.mpl_colors)
@@ -87,7 +87,7 @@ def graph(N_qubits, matrix):
     ax.set_facecolor("white")
 
     # Set perspective
-    ax.view_init(0, -30)
+    ax.view_init(35, -45)
 
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
@@ -129,9 +129,14 @@ def graph(N_qubits, matrix):
     ax.set_ylabel("Expected Results (Correct)")
     ax.set_zlabel("Prob. Success")
 
+    fig.tight_layout()
+
+    plt.savefig("tomography_graph")
+
     # Second plot. Heatmap
 
-    ax2 = fig.add_subplot(212)
+    fig2 = plt.figure(figsize=(5, 5))
+    ax2 = fig2.add_subplot(212)
 
     divider = make_axes_locatable(ax2)
     cax = divider.append_axes("right", size="5%", pad=0.05)
@@ -157,9 +162,9 @@ def graph(N_qubits, matrix):
     plt.colorbar(im, cax=cax)
 
     # plt.show()
-    fig.tight_layout()
+    fig2.tight_layout()
 
-    plt.savefig("tomography_graph")
+    plt.savefig("heatmap")
 
 
 def output_quantum_state(q_state, N_qubits):
