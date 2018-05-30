@@ -9,6 +9,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-white')
 from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 from palettable.mycarta import Cube1_20
 
 
@@ -86,7 +87,7 @@ def graph(N_qubits, matrix):
     ax.set_facecolor("white")
 
     # Set perspective
-    ax.view_init(0, 45)
+    ax.view_init(0, -30)
 
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
@@ -132,6 +133,9 @@ def graph(N_qubits, matrix):
 
     ax2 = fig.add_subplot(212)
 
+    divider = make_axes_locatable(ax2)
+    cax = divider.append_axes("right", size="5%", pad=0.05)
+
     im = ax2.imshow(matrix, cmap="jet")
     # im = ax2.imshow(matrix, cmap=Cube1_20.mpl_colormap)
     # cbar = ax2.figure.colorbar(im, ax=ax2)
@@ -150,7 +154,7 @@ def graph(N_qubits, matrix):
     ax2.set_ylabel("Actual Results")
     ax2.set_title("Prob. Success")
 
-    plt.colorbar(im)
+    plt.colorbar(im, cax=cax)
 
     # plt.show()
     fig.tight_layout()
