@@ -108,7 +108,7 @@ def all_states_analysis(N_qubits):
         init_state = all_inpt_f(N_qubits, q)
         # prob_succ, tomography_matrix = analysis(N_qubits, tomography_matrix)
         prob_succ, tomography_matrix = quantumsim_analysis(
-            N_qubits, all_states_matrix, init_state)
+            N_qubits, tomography_matrix, init_state)
 
     print(tomography_matrix)
 
