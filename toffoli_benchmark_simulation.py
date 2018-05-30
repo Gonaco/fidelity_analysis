@@ -334,7 +334,7 @@ def tdag(q, time):
     return RotateEuler(q, time=time, theta=0, phi=-np.pi/4, lamda=0)
 
 
-def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf, error, init_state):
+def toffoli_gate_decomposition_circuit(q_t1=np.inf, q_t2=np.inf, error=0.01, init_state="000"):
     # create a circuit
     c = Circuit(title="toffoli_gate")
 
