@@ -130,7 +130,7 @@ def graph(N_qubits, matrix):
 
     ax2 = fig.add_subplot(212)
 
-    im = ax2.imshow(matrix)
+    im = ax2.imshow(matrix, cmap=Plasma_20.mpl_colormap)
     cbar = ax2.figure.colorbar(im)
 
     ax2.set_xticks(np.arange(2**N_qubits))
