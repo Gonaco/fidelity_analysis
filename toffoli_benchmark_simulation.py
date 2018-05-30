@@ -40,6 +40,8 @@ def analysis(N_qubits, all_states_matrix):
         q_state, measurement = qx_simulation(
             "test_output/toffoli_gate_error.qasm", N_qubits)
 
+        measurement = measurement[::-1]
+
         # print(expected_q_state)
         # print(q_state)
 
