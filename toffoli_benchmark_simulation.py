@@ -87,7 +87,7 @@ def graph(N_qubits, matrix):
     ax.set_facecolor("white")
 
     # Set perspective
-    # ax.view_init(60, 35)
+    # ax.view_init(60, 45)
 
     x = np.arange(2**N_qubits)
     y = np.arange(2**N_qubits)
@@ -129,7 +129,8 @@ def graph(N_qubits, matrix):
 
     ax2 = fig.add_subplot(212)
 
-    im = ax2.imshow(matrix, cmap=Cube1_20.mpl_colormap)
+    im = ax2.imshow(matrix, cmap=Cube1_20.mpl)
+    cbar = ax2.figure.colorbar(im, ax=ax2)
 
     ax2.set_xticks(np.arange(2**N_qubits))
     ax2.set_yticks(np.arange(2**N_qubits))
