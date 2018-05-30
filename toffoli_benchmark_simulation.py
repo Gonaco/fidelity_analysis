@@ -134,7 +134,7 @@ def graph(N_qubits, matrix):
 
     im = ax2.imshow(matrix, cmap="jet")
     # im = ax2.imshow(matrix, cmap=Cube1_20.mpl_colormap)
-    cbar = ax2.figure.colorbar(im, ax2=ax2)
+    # cbar = ax2.figure.colorbar(im, ax=ax2)
 
     ax2.set_xticks(np.arange(2**N_qubits))
     ax2.set_yticks(np.arange(2**N_qubits))
@@ -149,6 +149,8 @@ def graph(N_qubits, matrix):
     ax2.set_xlabel("Expected Results (Correct)")
     ax2.set_ylabel("Actual Results")
     ax2.set_title("Prob. Success")
+
+    plt.colorbar(im)
 
     # plt.show()
     fig.tight_layout()
