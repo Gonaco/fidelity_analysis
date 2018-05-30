@@ -19,6 +19,7 @@ from quantumsim.circuit import uniform_noisy_sampler
 from quantumsim.circuit import CNOT as cnot
 from quantumsim.circuit import Hadamard as h
 from quantumsim.circuit import RotateEuler as RotateEuler
+from quantumsim.circuit import ResetGate as ResetGate
 import quantumsim.sparsedm as sparsedm
 
 
