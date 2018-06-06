@@ -94,12 +94,13 @@ def quantumsim_analysis(N_qubits, all_states_matrix, init_state):
                                 for e in expected_measurement.tolist()), 2)
         m_int = int(''.join(str(int(e)) for e in measurement.tolist()), 2)
 
-        all_states_matrix[exp_m_int, m_int] = all_states_matrix[exp_m_int, m_int] + 1/N_exp
+        all_states_matrix[exp_m_int,
+                          m_int] = all_states_matrix[exp_m_int, m_int] + 1/N_exp
 
         success_registry.append(1 if np.array_equal(
             measurement, expected_measurement) else 0)
 
-        return probability_of_success(success_registry, N_exp), all_states_matrix
+    return probability_of_success(success_registry, N_exp), all_states_matrix
 
 
 def all_states_analysis(N_qubits):
