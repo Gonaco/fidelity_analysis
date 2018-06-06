@@ -85,6 +85,7 @@ def quantumsim_analysis(N_qubits, all_states_matrix, init_state):
     for i in range(N_exp):
 
         measurement = quantumsim_simulation(0.01, init_state)
+        measurement = measurement[::-1]
 
         print(expected_measurement)
         print(measurement)
