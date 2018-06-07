@@ -333,8 +333,8 @@ def quantumsim_simulation(error, init_state, N_exp, expected_measurement, all_st
 
     for i in range(N_exp):
         c.apply_to(sdm)
-        measurement = [sdm.classical["m2"],
-                       sdm.classical["m1"], sdm.classical["m0"]]
+        measurement = np.array([sdm.classical["m2"],
+                                sdm.classical["m1"], sdm.classical["m0"]])
         print("Expected Measurement:")
         print(expected_measurement)
         print("Actual Measurement:")
