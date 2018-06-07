@@ -315,7 +315,7 @@ def qx_simulation(qasm_f_path, N_qubits):
 # QUANTUMSIM ##################################################################
 
 
-def quantumsim_simulation(error, init_state, N_exp, expected_measurement, all_states_analysis):
+def quantumsim_simulation(error, init_state, N_exp, expected_measurement, all_states_matrix):
 
     # CIRCUIT DECLARATION
     c = toffoli_gate_decomposition_circuit(10, 10, error, init_state)
