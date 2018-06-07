@@ -72,7 +72,7 @@ def analysis(N_qubits, all_states_matrix):
 
 def quantumsim_analysis(N_qubits, all_states_matrix, init_state):
 
-    success_registry = []
+    # success_registry = []
     fidelity_registry = []
     N_exp = 1000
     qasm_f_path = "test_output/toffoli_gate.qasm"
@@ -317,6 +317,8 @@ def qx_simulation(qasm_f_path, N_qubits):
 
 def quantumsim_simulation(error, init_state, N_exp, expected_measurement, all_states_matrix):
 
+    success_registry = []
+
     # CIRCUIT DECLARATION
     c = toffoli_gate_decomposition_circuit(10, 10, error, init_state)
 
@@ -334,7 +336,7 @@ def quantumsim_simulation(error, init_state, N_exp, expected_measurement, all_st
     for i in range(N_exp):
         c.apply_to(sdm)
         measurement = np.array([sdm.classical["m2"],
-                                sdm.classical["m1"], sdm.classical["m0"]])
+                                sdm.classical["m1"], sdm.classical["m0"]], dtype=float)
         print("Expected Measurement:")
         print(expected_measurement)
         print("Actual Measurement:")
